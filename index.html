@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Answer & Earn UPI</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background: #f0f2f5; text-align: center; padding: 15px; margin: 0; }
+        .container { background: white; max-width: 450px; margin: 20px auto; padding: 20px; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+        .wallet-box { background: linear-gradient(135deg, #27ae60, #2ecc71); color: white; padding: 20px; border-radius: 15px; font-size: 24px; font-weight: bold; margin-bottom: 20px; }
+        .question-card { background: #fff; border: 1px solid #e0e0e0; padding: 20px; border-radius: 15px; margin-bottom: 20px; }
+        .btn { padding: 15px 35px; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; margin: 10px; color: white; font-size: 16px; transition: 0.3s; width: 80%; }
+        .btn-yes { background: #3498db; }
+        .btn-no { background: #e74c3c; }
+        .ad-space { background: #f9f9f9; border: 2px dashed #3498db; margin: 20px 0; padding: 10px; min-height: 100px; display: flex; align-items: center; justify-content: center; }
+        #withdraw-section { display:none; margin-top: 20px; padding-top: 20px; border-top: 2px solid #f0f0f0; }
+        input { padding: 12px; width: 85%; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; }
+        .timer-box { font-size: 18px; color: #e67e22; font-weight: bold; margin: 15px 0; display: none; }
+        .withdraw-btn { background: #f39c12; width: 100%; color: white; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="wallet-box">મારું બેલેન્સ: ₹<span id="balance">0.00</span></div>
+    
+    <div class="question-card">
+        <p style="font-size: 18px; font-weight: bold;">પ્રશ્ન: શું તમે દરરોજ ₹500 થી વધુ કમાવા માંગો છો?</p>
+        <div class="ad-space">
+            <script src="https://pl28702364.effectivegatecpm.com/a3/77/68/a377685bf5085efcab380a67233d5c2f.js"></script>
+        </div>
+        <button class="btn btn-yes" onclick="addMoney()">હા, ચોક્કસ</button>
+        <button class="btn btn-no" onclick="addMoney()">ના, પછી ક્યારેક</button>
+    </div>
+
+    <button onclick="showWithdraw()" style="background:none; border:none; color:#3498db; cursor:pointer; text-decoration:underline; font-weight:bold;">પૈસા UPI માં ઉપાડો</button>
+
+    <div id="withdraw-section">
+        <h3>વિડ્રોઅલ પ્રોસેસ</h3>
+        <input type="text" id="upi-id" placeholder="તમારો UPI ID નાખો">
+        
+        <div id="timer-msg" class="timer-box">મહેરબાની કરીને <span id="time">120</span> સેકન્ડ રાહ જુઓ... વિગતો ચેક થઈ રહી છે.</div>
+        
+        <button id="main-withdraw-btn" class="withdraw-btn" onclick="startTimer()">વિડ્રોઅલ રિક્વેસ્ટ મોકલો</button>
+        <button id="insta-btn" class="withdraw-btn" style="display:none; background:#833ab4;" onclick="goToInsta()">Instagram પર વિગતો મોકલો</button>
+    </div>
+</div>
+
+<script>
+    let currentBalance = parseFloat(localStorage.getItem('user_bal')) || 0.00;
+    document.getElementById('balance').innerText = currentBalance.toFixed(2);
+
+    function addMoney() {
+        currentBalance += 0.50; 
+        document.getElementById('balance').innerText = currentBalance.toFixed(2);
+        localStorage.setItem('user_bal', currentBalance);
+        alert("અભિનંદન! ₹0.50 જમા થયા.");
+        location.reload(); 
+    }
+
+    function showWithdraw() {
+        document.getElementById('withdraw-section').style.display = 'block';
+    }
+
+    function startTimer() {
+        let upi = document.getElementById('upi-id').value;
+        if (currentBalance < 50) {
+            alert("ઓછામાં ઓછા ₹50 જરૂરી છે."); return;
+        }
+        if (upi === "" || !upi.includes('@')) {
+            alert("સાચો UPI ID નાખો."); return;
+        }
+
+        document.getElementById('main-withdraw-btn').style.display = 'none';
+        document.getElementById('timer-msg').style.display = 'block';
+
+        let seconds = 120;
+        let countdown = setInterval(function() {
+            seconds--;
+            document.getElementById('time').innerText = seconds;
+            if (seconds <= 0) {
+                clearInterval(countdown);
+                document.getElementById('timer-msg').innerHTML = "વિગતો વેરીફાઈ થઈ ગઈ છે!";
+                document.getElementById('insta-btn').style.display = 'block';
+            }
+        }, 1000);
+    }
+
+    function goToInsta() {
+        let upi = document.getElementById('upi-id').value;
+        let balance = currentBalance.toFixed(2);
+        alert("હવે Instagram પર મેસેજ કરો: 'મારું બેલેન્સ ₹" + balance + " છે અને UPI ID: " + upi + " છે'");
+        window.location.href = "https://www.instagram.com/dhruv_tarsariya_official?igsh=czk0bWI1N2tscmpl";
+    }
+</script>
+
+</body>
+</html>
