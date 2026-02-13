@@ -12,7 +12,7 @@
         .btn { padding: 15px 35px; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; margin: 10px; color: white; font-size: 16px; transition: 0.3s; width: 80%; }
         .btn-yes { background: #3498db; }
         .btn-no { background: #e74c3c; }
-        .ad-space { background: #f9f9f9; border: 2px dashed #3498db; margin: 20px 0; padding: 10px; min-height: 100px; display: flex; align-items: center; justify-content: center; }
+        .ad-space { background: #f9f9f9; border: 2px dashed #3498db; margin: 20px 0; padding: 10px; min-height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         #withdraw-section { display:none; margin-top: 20px; padding-top: 20px; border-top: 2px solid #f0f0f0; }
         input { padding: 12px; width: 85%; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; }
         .timer-box { font-size: 18px; color: #e67e22; font-weight: bold; margin: 15px 0; display: none; }
@@ -27,7 +27,8 @@
     <div class="question-card">
         <p style="font-size: 18px; font-weight: bold;">પ્રશ્ન: શું તમે દરરોજ ₹500 થી વધુ કમાવા માંગો છો?</p>
         <div class="ad-space">
-            <script src="https://pl28702364.effectivegatecpm.com/a3/77/68/a377685bf5085efcab380a67233d5c2f.js"></script>
+            <script async="async" data-cfasync="false" src="https://pl28705457.effectivegatecpm.com/fa39f88d5c2fe30f34b0c625dd293121/invoke.js"></script>
+            <div id="container-fa39f88d5c2fe30f34b0c625dd293121"></div>
         </div>
         <button class="btn btn-yes" onclick="addMoney()">હા, ચોક્કસ</button>
         <button class="btn btn-no" onclick="addMoney()">ના, પછી ક્યારેક</button>
@@ -38,9 +39,7 @@
     <div id="withdraw-section">
         <h3>વિડ્રોઅલ પ્રોસેસ</h3>
         <input type="text" id="upi-id" placeholder="તમારો UPI ID નાખો">
-        
         <div id="timer-msg" class="timer-box">મહેરબાની કરીને <span id="time">120</span> સેકન્ડ રાહ જુઓ... વિગતો ચેક થઈ રહી છે.</div>
-        
         <button id="main-withdraw-btn" class="withdraw-btn" onclick="startTimer()">વિડ્રોઅલ રિક્વેસ્ટ મોકલો</button>
         <button id="insta-btn" class="withdraw-btn" style="display:none; background:#833ab4;" onclick="goToInsta()">Instagram પર વિગતો મોકલો</button>
     </div>
@@ -55,7 +54,6 @@
         document.getElementById('balance').innerText = currentBalance.toFixed(2);
         localStorage.setItem('user_bal', currentBalance);
         alert("અભિનંદન! ₹0.50 જમા થયા.");
-        location.reload(); 
     }
 
     function showWithdraw() {
